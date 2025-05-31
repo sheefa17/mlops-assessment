@@ -1,5 +1,4 @@
-flask
+Flask
 scikit-learn
 joblib
-numpy
-pytest
+

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mlops-flask-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mlops-flask
+  template:
+    metadata:
+      labels:
+        app: mlops-flask
+    spec:
+      containers:
+        - name: mlops-flask
+          image: mlops-flask:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5000
+

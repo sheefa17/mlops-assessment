@@ -1,14 +1,15 @@
 from sklearn.datasets import load_iris
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
 import joblib
-import os
 
-X, y = load_iris(return_X_y=True)
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+# Load data
+iris = load_iris()
+X, y = iris.data, iris.target
 
-model = LogisticRegression(max_iter=200)
-model.fit(X_train, y_train)
+# Train model
+clf = RandomForestClassifier()
+clf.fit(X, y)
 
-os.makedirs('model', exist_ok=True)
-joblib.dump(model, 'model/model.pkl')
+# Save model
+joblib.dump(clf, 'model.joblib')
+
